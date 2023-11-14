@@ -13,18 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 
-<div id="loginModal" class="modal">
-    <div class="modal-content">
-        <span id="exit" class="close">&times;</span>
-        <!-- Your login form content -->
-        <h2>Login</h2>
-        <form action="/your-login-endpoint" method="post">
-            <!-- Your login form fields -->
-        </form>
-    </div>
-</div>
-
-  <nav>
+  <nav id="nav">
     <img src='<?php echo base_url('Assets/Images/logo.jpg'); ?>' alt="Logo">
     <div>
       <a href="<?php echo base_url('index.php/'); ?>">Domov</a>
@@ -37,12 +26,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
   </nav>
 
-  <section class="hero">
+<section class="hero">
     <div class="container">
       <h1>Welcome to the Alpinist Club</h1>
       <p>Explore the heights, conquer the peaks, and join us on thrilling adventures.</p>
     </div>
-  </section>
+</section>
+
+<div class="login-container">
+<span class="close">&times;</span>
+    <h2>Login</h2>
+    <form class="login-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+</div>
 
   <section class="features">
     <div class="container">
