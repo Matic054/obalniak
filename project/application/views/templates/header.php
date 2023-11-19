@@ -22,6 +22,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <a href="<?php echo base_url('index.php/dogodki'); ?>">Dogodki</a>
       <a href="<?php echo base_url('index.php/galerija'); ?>">Galerija</a>
       <a href="<?php echo base_url('index.php/navrhu'); ?>">Na vrhu</a>
-      <a href="#" class="prijava">Prijava</a>
+
+      <?php if ($this->session->userdata('loggedIn')): 
+	$user_name = $this->session->userdata('user_name');
+	$initial = $user_name[0];
+      ?>
+        <a href="#" class="prijava" style="background-color:purple; border-radius:25px;"> <strong> <?php echo $initial ?> </strong> </a>
+      <?php else: ?>
+        <a href="#" class="prijava">Prijava</a>
+      <?php endif; ?>
     </div>
   </nav>
