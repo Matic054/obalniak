@@ -73,10 +73,14 @@ class Event_model extends CI_Model {
     public function insert_event_image($event_id, $image_path) {
         $data = array(
             'event_id' => $event_id,
-            'image' => $image_path, // Assuming image is a path, adjust accordingly
+            'image' => $image_path, 
         );
 
         $this->db->insert('Event_image', $data);
+    }
+
+    public function create_comment($comment_data){
+        $this->db->insert('Event_comment', $comment_data);
     }
 
 }

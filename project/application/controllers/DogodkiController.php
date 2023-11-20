@@ -26,7 +26,6 @@ class DogodkiController extends CI_Controller {
     }
 
 	public function create(){
-		//var_dump($_FILES);
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $title = $this->input->post('title');
             $text = $this->input->post('text');
@@ -59,4 +58,21 @@ class DogodkiController extends CI_Controller {
             }
 		}
 	}
+
+    public function add_comment($event_id){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $text = $this->input->post('text');
+            $this->load->model('User_model');
+            $user_name = $this->session->userdata('user_name');
+            $user_id = $this->User_model->get_id_by_username($user_name);
+            $comment_data = array(
+                'event_id' => $event_id,
+				'user_id' => $user_id,
+                'comment_text' => $text
+            );
+            $this->load->model('Event_model');
+            $this->Event_model->create_comment($comment_data);
+            $this->load_specific_event($event_id);
+		}
+    }
 }
