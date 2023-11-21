@@ -57,10 +57,4 @@ class FormController extends CI_Controller {
 		$this->load->view('templates/footer');
     }
 
-    public function form_post(){
-        $this->load->view('templates/header');
-		$this->load->view('create_post_form');
-		$this->load->view('templates/footer');
-    }
-
 }

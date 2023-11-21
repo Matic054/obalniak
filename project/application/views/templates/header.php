@@ -19,9 +19,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <a href="<?php echo base_url('index.php/'); ?>">Domov</a>
       <a href="<?php echo base_url('index.php/novice'); ?>">Novice</a>
       <a href="<?php echo base_url('index.php/onas'); ?>">O nas</a>
-      <a href="<?php echo base_url('index.php/dogodki'); ?>">Dogodki</a>
+      <a href="<?php echo base_url('index.php/dogodki'); ?>">Reports</a>
       <a href="<?php echo base_url('index.php/galerija'); ?>">Galerija</a>
-      <a href="<?php echo base_url('index.php/navrhu'); ?>">Na vrhu</a>
 
       <?php if ($this->session->userdata('loggedIn')): 
 	$user_name = $this->session->userdata('user_name');
