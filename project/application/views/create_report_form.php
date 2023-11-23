@@ -1,4 +1,4 @@
-<form action="<?php echo base_url('index.php/create_event'); ?>" method="post" enctype="multipart/form-data">
+<form action="<?php echo base_url('index.php/create_report'); ?>" method="post" enctype="multipart/form-data">
     <label for="title">Event Title:</label>
     <input type="text" name="title" required>
 

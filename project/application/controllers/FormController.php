@@ -51,10 +51,23 @@ class FormController extends CI_Controller {
             redirect('/');        
 	    }
     }
+    public function form_report(){
+        $this->load->view('templates/header');
+		$this->load->view('create_report_form');
+		$this->load->view('templates/footer');
+    }
+
     public function form_event(){
         $this->load->view('templates/header');
 		$this->load->view('create_event_form');
 		$this->load->view('templates/footer');
     }
+
+    public function form_alpine(){
+        $this->load->view('templates/header');
+		$this->load->view('create_alpine_form');
+		$this->load->view('templates/footer');
+    }
+
 
 }

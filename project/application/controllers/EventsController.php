@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class DogodkiController extends CI_Controller {
+class EventsController extends CI_Controller {
 
 	public function index()
 	{
@@ -9,7 +9,7 @@ class DogodkiController extends CI_Controller {
         $data['events'] = $this->Event_model->get_events();
 
 		$this->load->view('templates/header');
-		$this->load->view('dogodki', $data);
+		$this->load->view('events', $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -18,7 +18,6 @@ class DogodkiController extends CI_Controller {
         $this->load->model('Event_model');
         $data['event'] = $this->Event_model->get_event_by_id($event_id);
 		$data['event_images'] = $this->Event_model->get_event_images($event_id);
-		$data['comments'] = $this->Event_model->get_comments($event_id);
 
 		$this->load->view('templates/header');
 		$this->load->view('event_view', $data);
@@ -30,7 +29,6 @@ class DogodkiController extends CI_Controller {
             $title = $this->input->post('title');
             $text = $this->input->post('text');
 
-            // Step 1: Insert Event Information
 			$this->load->model('User_model');
 			$user_name = $this->session->userdata('user_name');
 			$user_id = $this->User_model->get_id_by_username($user_name);
@@ -43,9 +41,7 @@ class DogodkiController extends CI_Controller {
             $this->load->model('Event_model');
             $event_id = $this->Event_model->create_event($event_data);
 
-            // Step 2: Retrieve Event ID
             if ($event_id) {
-                // Step 3: Insert Event Images
                 $this->load->library('upload');
 
                 foreach ($_FILES['images']['name'] as $key => $image_name) {
@@ -59,20 +55,4 @@ class DogodkiController extends CI_Controller {
 		}
 	}
 
-    public function add_comment($event_id){
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $text = $this->input->post('text');
-            $this->load->model('User_model');
-            $user_name = $this->session->userdata('user_name');
-            $user_id = $this->User_model->get_id_by_username($user_name);
-            $comment_data = array(
-                'event_id' => $event_id,
-				'user_id' => $user_id,
-                'comment_text' => $text
-            );
-            $this->load->model('Event_model');
-            $this->Event_model->create_comment($comment_data);
-            $this->load_specific_event($event_id);
-		}
-    }
 }
