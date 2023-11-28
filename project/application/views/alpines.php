@@ -1,5 +1,5 @@
 <h1>Alpine School</h1>
-<?php if ($this->session->userdata('loggedIn')): ?>
+<?php if ($this->session->userdata('admin')): ?>
     <a href="<?php echo base_url('index.php/form_alpine'); ?>">Add event</a>
 <?php endif; ?>
     <div class="event-container">

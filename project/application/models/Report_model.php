@@ -46,8 +46,6 @@ class Report_model extends CI_Model {
             return $result;
         }
 
-        //$event_images = $query->result();
-
         return null;
     }
 

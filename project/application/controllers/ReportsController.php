@@ -8,9 +8,17 @@ class ReportsController extends CI_Controller {
 		$this->load->model('Report_model');
         $data['reports'] = $this->Report_model->get_reports();
 
-		$this->load->view('templates/header');
-		$this->load->view('reports', $data);
-		$this->load->view('templates/footer');
+        if ($this->session->userdata('has_photo')){
+			$this->load->model('User_model');
+			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
+			$this->load->view('templates/header', $data);
+			$this->load->view('reports', $data);
+		    $this->load->view('templates/footer');
+		} else {
+			$this->load->view('templates/header');
+            $this->load->view('reports', $data);
+            $this->load->view('templates/footer');
+		}
 	}
 
 	public function load_specific_report($report_id) {
@@ -20,9 +28,17 @@ class ReportsController extends CI_Controller {
 		$data['report_images'] = $this->Report_model->get_report_images($report_id);
 		$data['comments'] = $this->Report_model->get_comments($report_id);
 
-		$this->load->view('templates/header');
-		$this->load->view('report_view', $data);
-		$this->load->view('templates/footer');
+        if ($this->session->userdata('has_photo')){
+			$this->load->model('User_model');
+			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
+			$this->load->view('templates/header', $data);
+			$this->load->view('report_view', $data);
+		    $this->load->view('templates/footer');
+		} else {
+			$this->load->view('templates/header');
+            $this->load->view('report_view', $data);
+            $this->load->view('templates/footer');
+		}
     }
 
 	public function create(){

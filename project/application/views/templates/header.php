@@ -21,14 +21,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <a href="<?php echo base_url('index.php/alpine'); ?>">Alpine school</a>
       <a href="<?php echo base_url('index.php/events'); ?>">Events</a>
       <a href="<?php echo base_url('index.php/reports'); ?>">Reports</a>
-
-      <?php if ($this->session->userdata('loggedIn')): 
-	$user_name = $this->session->userdata('user_name');
-	$initial = $user_name[0];
-      ?>
-        <a href="#" class="prijava" style="background-color:purple; border-radius:25px;"> <strong> <?php echo $initial ?> </strong> </a>
-      <?php else: ?>
-        <a href="#" class="prijava">Prijava</a>
+      <?php if ($this->session->userdata('admin')): ?>
+        <a href="<?php echo base_url('index.php/users_view'); ?>">Users</a>
       <?php endif; ?>
+
+  
+        <?php if ($this->session->userdata('loggedIn') && $this->session->userdata('has_photo')==FALSE): 
+          $user_name = $this->session->userdata('user_name');
+          $initial = $user_name[0];
+        ?>
+          <?php if ($this->session->userdata('admin')==FALSE): ?>
+            <a href="#" class="prijava" style="background-color:purple; border-radius:25px;"> <strong> <?php echo $initial ?> </strong> </a>
+          <?php else: ?>
+            <a href="#" class="prijava" style="background-color:#b8860b; border-radius:25px;"> <strong> <?php echo $initial ?> </strong> </a>
+          <?php endif; ?>
+        <?php elseif ($this->session->userdata('loggedIn')==FALSE): ?>
+          <a href="#" class="prijava">Prijava</a>
+        <?php endif; ?>
     </div>
+    <?php if ($this->session->userdata('has_photo')):?>
+      <img class="prijava" src="data:image/jpeg;base64,<?php echo base64_encode($photo[0]["profile_picture"]); ?>" alt="User Profile Picture">
+    <?php endif; ?>
   </nav>

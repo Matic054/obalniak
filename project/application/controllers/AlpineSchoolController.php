@@ -8,9 +8,17 @@ class AlpineSchoolController extends CI_Controller {
 		$this->load->model('Alpine_model');
         $data['alpines'] = $this->Alpine_model->get_alpines();
 
-		$this->load->view('templates/header');
-		$this->load->view('alpines', $data);
-		$this->load->view('templates/footer');
+        if ($this->session->userdata('has_photo')){
+			$this->load->model('User_model');
+			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
+			$this->load->view('templates/header', $data);
+			$this->load->view('alpines', $data);
+		    $this->load->view('templates/footer');
+		} else {
+			$this->load->view('templates/header');
+            $this->load->view('alpines', $data);
+            $this->load->view('templates/footer');
+		}
 	}
 
 	public function load_specific_alpine($alpine_id) {
@@ -19,9 +27,17 @@ class AlpineSchoolController extends CI_Controller {
         $data['alpine'] = $this->Alpine_model->get_alpine_by_id($alpine_id);
 		$data['alpine_images'] = $this->Alpine_model->get_alpine_images($alpine_id);
 
-		$this->load->view('templates/header');
-		$this->load->view('alpine_view', $data);
-		$this->load->view('templates/footer');
+        if ($this->session->userdata('has_photo')){
+			$this->load->model('User_model');
+			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
+			$this->load->view('templates/header', $data);
+			$this->load->view('alpine_view', $data);
+		    $this->load->view('templates/footer');
+		} else {
+			$this->load->view('templates/header');
+            $this->load->view('alpine_view', $data);
+            $this->load->view('templates/footer');
+		}
     }
 
 	public function create(){

@@ -44,14 +44,42 @@ class User_model extends CI_Model {
         return $query->row()->user_id;
     }
 
+    public function is_admin($username){
+        $this->db->select('admin');
+        $this->db->where('user_name', $username);
+        $query = $this->db->get('User');
+        return $query->row()->admin == 1;
+    }
+
     //to add a new user
-    public function insert_user($username, $email, $password) {
+    public function insert_user($username, $email, $password, $phone, $profile_image) {
         $data = array(
             'user_name' => $username,
             'email' => $email,
             'password' => password_hash($password, PASSWORD_DEFAULT), 
+            'phone_number' => $phone,
+            'profile_picture' => $profile_image
         );
 
         $this->db->insert('User', $data);
+    }
+
+    public function get_profile_image($username){
+        $this->db->select('profile_picture');
+        $this->db->where('user_name', $username);
+        $query = $this->db->get('User');
+
+        if ($query->num_rows() > 0) {
+            $result = $query->result_array();
+            return $result;
+        }
+
+        return null;
+    }
+
+    public function get_users(){
+        $query = $this->db->get('User');
+        $users = $query->result();
+        return $users;
     }
 }

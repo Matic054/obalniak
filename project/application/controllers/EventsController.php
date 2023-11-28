@@ -8,9 +8,17 @@ class EventsController extends CI_Controller {
 		$this->load->model('Event_model');
         $data['events'] = $this->Event_model->get_events();
 
-		$this->load->view('templates/header');
-		$this->load->view('events', $data);
-		$this->load->view('templates/footer');
+        if ($this->session->userdata('has_photo')){
+			$this->load->model('User_model');
+			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
+			$this->load->view('templates/header', $data);
+			$this->load->view('events', $data);
+		    $this->load->view('templates/footer');
+		} else {
+			$this->load->view('templates/header');
+            $this->load->view('events', $data);
+            $this->load->view('templates/footer');
+		}
 	}
 
 	public function load_specific_event($event_id) {
@@ -19,9 +27,17 @@ class EventsController extends CI_Controller {
         $data['event'] = $this->Event_model->get_event_by_id($event_id);
 		$data['event_images'] = $this->Event_model->get_event_images($event_id);
 
-		$this->load->view('templates/header');
-		$this->load->view('event_view', $data);
-		$this->load->view('templates/footer');
+        if ($this->session->userdata('has_photo')){
+			$this->load->model('User_model');
+			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
+			$this->load->view('templates/header', $data);
+			$this->load->view('event_view', $data);
+		    $this->load->view('templates/footer');
+		} else {
+			$this->load->view('templates/header');
+            $this->load->view('event_view', $data);
+            $this->load->view('templates/footer');
+		}
     }
 
 	public function create(){
