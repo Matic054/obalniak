@@ -20,11 +20,6 @@ body {
       border-radius: 10px;
     }
 
-    img.prijava {
-      max-height: 40px;
-      border: 2px solid #ccc; /* Example border style */
-  }
-
     nav a {
       color: #ffffff;
       text-decoration: none;
@@ -120,6 +115,18 @@ body {
       color: #ffffff;
     }
 
+.login-container {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000; /* Ensure the form is on top of other elements */
+  background-color: #fff; /* Background color of the form container */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .login-container h2 {
   margin-bottom: 15px; /* Add some space below the title */
   color: #000000; /* Adjust text color as needed */
@@ -180,21 +187,86 @@ body {
 }
 
 .event-container {
+  margin-top: 3cm;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
+  margin-bottom: 10cm;
 }
+
 
 .event {
-  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 5px solid #444444; /* Add a bottom border with a darker shade of gray */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); /* Create a drop shadow effect */
+  border-radius: 10px;
   padding: 10px;
-  width: calc(30% - 10px); /* 33.33% width with 20px gap */
+  width: 10cm;
+  height: 7.5cm;
+  background-color: #999999;
 }
 
-.event-image{
+.event >.ev_author{
+  color: #075887;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+a.add-event-button {
+  background-color: #075887;
+  color: white;
+  padding: 20px 40px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+a.add-event-button:hover{
+  background-color: white;
+  color:  #075887;
+}
+
+.event-image {
+  width: 33%;
+  height: auto;
   border: 1px solid #ccc;
   padding: 10px;
-  width: calc(30% - 10px);
+}
+
+.event a {
+ background-color: #001f3f;
+  color: #ffffff;
+  padding: 15px 30px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: auto;
+  display: block;
+}
+.event a:hover {
+  background-color: #fff;
+  color: #000;
+}
+.event h3 {
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+  color: #000000;
+  border-bottom: 3px solid #001f3f;
+  padding-bottom: 3px;
+}
+.event p{
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+  color: #000000;
+}
+
+h1 {
+  text-align: center; /* Center the <h1> element outside the event container */
 }
 
 .report-container {
@@ -213,16 +285,4 @@ body {
   border: 1px solid #ccc;
   padding: 10px;
   width: calc(30% - 10px);
-}
-
-.users-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.user {
-  border: 1px solid #ccc;
-  padding: 10px;
-  width: calc(30% - 10px); /* 33.33% width with 20px gap */
 }
