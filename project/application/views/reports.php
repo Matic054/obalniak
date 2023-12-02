@@ -1,6 +1,8 @@
   <h1>Reports</h1>
 <?php if ($this->session->userdata('loggedIn')): ?>
-    <a href="<?php echo base_url('index.php/form_report'); ?>">Add report</a>
+    <div class="button-container">
+  <a href="<?php echo base_url('index.php/form_report'); ?>" class="add-event-button">Add Report</a>
+</div>
 <?php endif; ?>
     <div class="report-container">
         <?php foreach ($reports as $report): ?>
