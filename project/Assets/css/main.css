@@ -271,6 +271,8 @@ h1 {
 
 .report-container {
   display: flex;
+  margin-top: 3cm;
+  margin-bottom: 10cm;
   flex-wrap: wrap;
   gap: 20px;
 }
@@ -279,10 +281,150 @@ h1 {
   border: 1px solid #ccc;
   padding: 10px;
   width: calc(30% - 10px); /* 33.33% width with 20px gap */
+  background-color: #333; /* Dark grey background color */
+  color: #fff; /* Text color */
+  border-radius: 10px; /* Rounded edges */
+  text-align: center;
 }
-
-.report-image{
+.report a {
+  background-color: #001f3f;
+   color: #ffffff;
+   padding: 15px 30px;
+   border-radius: 5px;
+   text-decoration: none;
+   margin: auto;
+   display: block;
+ }
+ .report a:hover {
+   background-color: #fff;
+   color: #000;
+ }
+.report-image {
   border: 1px solid #ccc;
   padding: 10px;
   width: calc(30% - 10px);
+  border-radius: 10px; /* Rounded edges for the image container */
+  overflow: hidden; /* Hide overflow content (if the image is larger) */
+}
+
+.report img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px; /* Rounded edges for the image */
+  display: block; /* Remove extra space below the image */
+  margin: 0 auto; /* Center the image */
+}
+
+.report h3 {
+  margin-bottom: 10px;
+}
+.beautiful-form {
+  max-width: 400px;
+  margin: 2cm auto; /* Added margin from all sides */
+  margin-bottom: 10cm;
+  padding: 40px;
+  padding-right: 60px;
+  background-color: #001f3f;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  background-color: white; /* Changed background color to white */
+  color: #001f3f; /* Changed text color to dark blue */
+  transition: border-color 0.3s; /* Added transition for border color */
+}
+
+.form-input:focus {
+  border-color: #075887; /* Border color on focus */
+}
+
+.form-button {
+  padding: 15px; /* Increased padding for a bigger button */
+  background-color: #075887; /* Changed button color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.form-button:hover {
+  background-color: white;
+  color: #001f3f; /* Text color on hover */
+}
+.event-details-form {
+  max-width: 400px;
+  margin: 20px auto;
+  margin-bottom: 10cm;
+  background-color: #001f3f;
+  color: white;
+  padding: 40px 60px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  background-color: white;
+  color: #001f3f;
+  transition: border-color 0.3s;
+}
+
+.form-input:focus {
+  border-color: #075887;
+}
+
+.submit-button {
+  padding: 15px;
+ background-color: white;
+ margin-top: 25px;
+}
+.file-input-container {
+  position: relative;
+}
+
+.file-input-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.file-input {
+  position: absolute;
+  font-size: 100px;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+
+.upload-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  cursor: pointer;
 }
