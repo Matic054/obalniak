@@ -62,7 +62,7 @@ class Event_model extends CI_Model {
             'image' => $image, 
         );
 
-        $this->db->insert('Report_image', $data);
+        $this->db->insert('Event_image', $data);
     }
 
 }

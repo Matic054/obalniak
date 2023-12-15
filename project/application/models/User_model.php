@@ -82,4 +82,8 @@ class User_model extends CI_Model {
         $users = $query->result();
         return $users;
     }
+
+    public function delete_user($user_id){
+        echo $user_id;
+    }
 }

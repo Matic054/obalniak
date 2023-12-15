@@ -19,4 +19,9 @@ class UserController extends CI_Controller {
             $this->load->view('templates/footer');
 		}
 	}
+
+	public function delete_user($user_id){
+		$this->load()->model('User_model');
+		$this->User_model->delete_user();
+	}
 }

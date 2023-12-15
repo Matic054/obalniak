@@ -63,7 +63,6 @@ class ReportsController extends CI_Controller {
             if ($report_id) {
                 // Step 3: Insert Event Images
                 $this->load->library('upload');
-
                 foreach ($_FILES['images']['name'] as $key => $image_name) {
                     $image_tmp_name = $_FILES['images']['tmp_name'][$key];
                     $image_data = file_get_contents($image_tmp_name);

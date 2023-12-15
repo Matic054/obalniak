@@ -68,10 +68,10 @@ class Report_model extends CI_Model {
         return $this->db->insert_id();
     }
 
-    public function insert_report_image($report_id, $image_path) {
+    public function insert_report_image($report_id, $image) {
         $data = array(
             'event_id' => $report_id,
-            'image' => $image_path, 
+            'image' => $image, 
         );
 
         $this->db->insert('Report_image', $data);

@@ -22,7 +22,6 @@ class EventsController extends CI_Controller {
 	}
 
 	public function load_specific_event($event_id) {
-        // Use $event_id to fetch the specific event from the database
         $this->load->model('Event_model');
         $data['event'] = $this->Event_model->get_event_by_id($event_id);
 		$data['event_images'] = $this->Event_model->get_event_images($event_id);
@@ -59,7 +58,7 @@ class EventsController extends CI_Controller {
 
             if ($event_id) {
                 $this->load->library('upload');
-
+				//var_dump($_FILES['images']['name']);
                 foreach ($_FILES['images']['name'] as $key => $image_name) {
                     $image_tmp_name = $_FILES['images']['tmp_name'][$key];
                     $image_data = file_get_contents($image_tmp_name);

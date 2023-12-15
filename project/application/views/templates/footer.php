@@ -1,7 +1,7 @@
 <?php if (false == $this->session->userdata('loggedIn')): ?>
 <div class="login-container">
 <span class="close">&times;</span>
-    <h2>Prijavite se</h2>
+    <h2>Log in</h2>
     <form class="login-form" action="<?php echo base_url('index.php/formcontroller/validateLoginData'); ?>" method="post">
         <label for="username">Uporabnisko ime:</label>
         <input type="text" id="username" name="username" required>
