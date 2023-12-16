@@ -1,6 +1,8 @@
+<div class="single-event">
 <h3><?php echo $report[0]->title; ?></h3>
 <p>Avtor: <?php echo $report[0]->username; ?></p>
-<p><?php echo $report[0]->text ?></p>
+<p class="text"><?php echo $report[0]->text ?></p>
+<br>
 
 <?php if ($report_images): ?>
 <?php foreach ($report_images as $image): ?>
@@ -29,3 +31,4 @@
     <button type="submit">Potrdi</button>
 </form>
 <?php endif; ?>
+</div>

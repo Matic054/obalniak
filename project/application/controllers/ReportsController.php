@@ -87,7 +87,7 @@ class ReportsController extends CI_Controller {
             );
             $this->load->model('Report_model');
             $this->Report_model->create_comment($comment_data);
-            $this->load_specific_report($report_id);
+            redirect("/index.php/report/" . substr(current_url(), -1));
 		}
     }
 }

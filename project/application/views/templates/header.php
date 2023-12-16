@@ -17,7 +17,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <img src='<?php echo base_url('Assets/Images/logo.jpg'); ?>' alt="Logo">
     <div>
       <a href="<?php echo base_url('index.php/'); ?>">Domov</a>
-      <a href="<?php echo base_url('index.php/onas'); ?>">O nas</a>
+      <a href="<?php echo base_url('index.php/routes'); ?>">Routes</a>
+      <a href="<?php echo base_url('index.php/onas'); ?>">About us</a>
       <a href="<?php echo base_url('index.php/alpine'); ?>">Alpine school</a>
       <a href="<?php echo base_url('index.php/events'); ?>">Events</a>
       <a href="<?php echo base_url('index.php/reports'); ?>">Reports</a>

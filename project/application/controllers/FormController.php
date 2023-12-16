@@ -66,13 +66,13 @@ class FormController extends CI_Controller {
 	        $this->load->model('User_model');
             if (FALSE == $this->User_model->check_user_credentials($username, $password)){
                 $this->User_model->insert_user($username, $email, $password, $phone, $profile_image);
-                $this->session->set_userdata('loggedIn', TRUE);
+                /*$this->session->set_userdata('loggedIn', TRUE);
 		        $this->session->set_userdata('user_name', $username);
-		if ($profile_image == null){
+		        if ($profile_image == null){
                     $this->session->set_userdata('has_photo', FALSE);
                 } else {
                     $this->session->set_userdata('has_photo', TRUE);
-                }
+                }*/
             }
         }
         redirect('/');
@@ -116,6 +116,22 @@ class FormController extends CI_Controller {
 		} else {
 			$this->load->view('templates/header');
             $this->load->view('create_alpine_form');
+            $this->load->view('templates/footer');
+		}
+    }
+
+    public function form_route(){
+        $this->load->model('User_model');
+		$data['users'] = $this->User_model->get_users();
+        if ($this->session->userdata('has_photo')){
+			$this->load->model('User_model');
+			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
+			$this->load->view('templates/header', $data);
+			$this->load->view('create_route_form');
+		    $this->load->view('templates/footer');
+		} else {
+			$this->load->view('templates/header');
+            $this->load->view('create_route_form', $data);
             $this->load->view('templates/footer');
 		}
     }

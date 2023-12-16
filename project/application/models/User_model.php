@@ -14,9 +14,10 @@ class User_model extends CI_Model {
         $query = $this->db->get('User');
 
         if ($query->num_rows() > 0) {
-            $hashFromDatabase = $query->row()->password;
+            $user = $query->row();
+            $hashFromDatabase = $user->password;
 
-            if (password_verify($password, $hashFromDatabase)) {
+            if ($user->confirmed && password_verify($password, $hashFromDatabase)) {
                 return true;
             }
         }
@@ -84,6 +85,21 @@ class User_model extends CI_Model {
     }
 
     public function delete_user($user_id){
-        echo $user_id;
+        $this->db->where('user_id', $user_id);
+        $this->db->delete('User');
+        redirect("/index.php/users_view");
+    }
+
+    public function make_admin($user_id){
+        $this->db->where('user_id', $user_id);
+        $this->db->update('User', array('admin' => 1));
+        redirect("/index.php/users_view");
+    }
+
+    public function confirm_user($user_id){
+        $this->db->where('user_id', $user_id);
+        $this->db->update('User', array('confirmed' => 1));
+
+        redirect("/index.php/users_view");
     }
 }

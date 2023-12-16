@@ -21,7 +21,17 @@ class UserController extends CI_Controller {
 	}
 
 	public function delete_user($user_id){
-		$this->load()->model('User_model');
-		$this->User_model->delete_user();
+		$this->load->model('User_model');
+		$this->User_model->delete_user($user_id);
+	}
+
+	public function make_admin($user_id){
+		$this->load->model('User_model');
+		$this->User_model->make_admin($user_id);
+	}
+
+	public function confirm_user($user_id){
+		$this->load->model('User_model');
+		$this->User_model->confirm_user($user_id);
 	}
 }
