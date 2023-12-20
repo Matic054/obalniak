@@ -81,4 +81,19 @@ class Report_model extends CI_Model {
         $this->db->insert('Report_comment', $comment_data);
     }
 
+    public function delete_report($report_id){
+        $this->db->where('event_id', $report_id);
+        $this->db->delete('Report');
+    }
+
+    public function delete_report_image($report_id){
+        $this->db->where('event_id', $report_id);
+        $this->db->delete('Report_image');
+    }
+
+    public function delete_report_comments($report_id){
+        $this->db->where('event_id', $report_id);
+        $this->db->delete('Report_comment');
+    }
+
 }

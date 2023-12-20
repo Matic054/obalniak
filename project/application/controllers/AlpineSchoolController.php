@@ -7,6 +7,9 @@ class AlpineSchoolController extends CI_Controller {
 	{
 		$this->load->model('Alpine_model');
         $data['alpines'] = $this->Alpine_model->get_alpines();
+		if ($this->session->userdata('admin') == false){
+			$data['chosen'] = $this->Alpine_model->get_chosen_alpine();
+		}
 
         if ($this->session->userdata('has_photo')){
 			$this->load->model('User_model');
@@ -21,8 +24,13 @@ class AlpineSchoolController extends CI_Controller {
 		}
 	}
 
+	public function chose($alpine_id){
+		$this->load->model('Alpine_model');
+		$this->Alpine_model->chose($alpine_id);
+		redirect("index.php/alpine/" . $alpine_id);
+	}
+
 	public function load_specific_alpine($alpine_id) {
-        // Use $event_id to fetch the specific event from the database
         $this->load->model('Alpine_model');
         $data['alpine'] = $this->Alpine_model->get_alpine_by_id($alpine_id);
 		$data['alpine_images'] = $this->Alpine_model->get_alpine_images($alpine_id);

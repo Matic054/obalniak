@@ -90,4 +90,13 @@ class ReportsController extends CI_Controller {
             redirect("/index.php/report/" . substr(current_url(), -1));
 		}
     }
+
+    public function delete_report($report_id){
+        $this->load->model('Report_model');
+		$this->Report_model->delete_report($report_id);
+        $this->Report_model->delete_report_image($report_id);
+        $this->Report_model->delete_report_comments($report_id);
+        redirect("/index.php/reports");
+    }
+
 }

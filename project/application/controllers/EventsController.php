@@ -70,4 +70,10 @@ class EventsController extends CI_Controller {
 		}
 	}
 
+	public function delete_event($event_id){
+		$this->load->model('Event_model');
+		$this->Event_model->delete_event($event_id);
+		$this->Event_model->delete_event_image($event_id);
+		redirect("/index.php/events");
+	}
 }

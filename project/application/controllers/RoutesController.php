@@ -99,4 +99,10 @@ class RoutesController extends CI_Controller {
 		return ob_get_clean();
 	}
 
+	public function delete_route($user_id, $date){
+		$this->load->model('Routes_model');
+		$this->Routes_model->delete_route($user_id, $date);
+		redirect("index.php/routes");
+	}
+
 }

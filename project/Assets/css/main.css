@@ -203,8 +203,9 @@ body {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); /* Create a drop shadow effect */
   border-radius: 10px;
   padding: 10px;
-  width: 10cm;
-  height: 7.5cm;
+  width:17%;
+  /*width: 10cm;*/
+  height: auto;
   background-color: #999999;
 }
 
@@ -252,7 +253,7 @@ a.add-event-button:hover{
   background-color: #fff;
   color: #000;
 }
-.event h3 {
+.event h2 {
   font-family: 'Dancing Script', cursive;
   text-align: center;
   color: #000000;
@@ -275,12 +276,16 @@ h1 {
   margin-bottom: 10cm;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
 }
 
 .report {
+  display: flex;
+  flex-direction: column;
+  width:17%;
+  /* width: calc(30% - 10px); /* 33.33% width with 20px gap*/
   border: 1px solid #ccc;
   padding: 10px;
-  width: calc(30% - 10px); /* 33.33% width with 20px gap */
   background-color: #333; /* Dark grey background color */
   color: #fff; /* Text color */
   border-radius: 10px; /* Rounded edges */
@@ -429,6 +434,15 @@ h1 {
   cursor: pointer;
 }
 
+.users-container{
+  margin-top: 3cm;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 10cm;
+}
+
 .user{
   display: flex;
   flex-direction: column;
@@ -440,6 +454,20 @@ h1 {
   height: 7.5cm;
   background-color: #999999;
 }
+
+.user a {
+  background-color: #001f3f;
+   color: #ffffff;
+   padding: 5px 10px;
+   border-radius: 5px;
+   text-decoration: none;
+   margin: auto;
+   display: block;
+ }
+ .user a:hover {
+   background-color: #fff;
+   color: #000;
+ }
 
 .route-container {
   margin-top: 3cm;

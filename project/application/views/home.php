@@ -25,3 +25,12 @@
       </div>
     </div>
   </section>
+
+  <!--https://developers.facebook.com/docs/plugins/page-plugin-->
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/sl_SI/sdk.js#xfbml=1&version=v18.0" nonce="ZnqZMkc1"></script>
+
+  <div class="fb-page" data-href="https://www.facebook.com/up.famnit" data-tabs="timeline" data-width="300" data-height="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+    <blockquote cite="https://www.facebook.com/up.famnit" class="fb-xfbml-parse-ignore">
+      <a href="https://www.facebook.com/up.famnit">UP Famnit</a>
+    </blockquote>
+  </div>

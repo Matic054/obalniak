@@ -23,6 +23,12 @@
                 <p >Length(m): <?php echo $route->length; ?></p>
                 <p >Difficulty: <?php echo $route->difficulty; ?></p>
                 <p >Notes: <?php echo $route->notes; ?></p>
+                <?php if ($this->session->userdata('admin') | $this->session->userdata('user_name') == $route->username): ?>
+                <br>
+                <div class="button-container">
+                    <a href="<?php echo base_url('index.php/delete_route/'. $route->user_id . '/' . $route->date); ?>">Delete</a>
+                </div>
+                <?php endif; ?>
             </div>
         <?php endforeach; ?>
     </div>

@@ -65,4 +65,13 @@ class Event_model extends CI_Model {
         $this->db->insert('Event_image', $data);
     }
 
+    public function delete_event($event_id){
+        $this->db->where('event_id', $event_id);
+        $this->db->delete('Event');
+    }
+
+    public function delete_event_image($event_id){
+        $this->db->where('event_id', $event_id);
+        $this->db->delete('Event_image');
+    }
 }

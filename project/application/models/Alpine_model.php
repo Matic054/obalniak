@@ -8,6 +8,25 @@ class Alpine_model extends CI_Model {
         $this->load->database(); // Load the database library
     }
 
+    public function get_chosen_alpine(){
+        $this->db->where('chosen', true);
+        $query = $this->db->get('Alpine_school');
+
+        $alpine = $query->result()[0];
+
+        $alpine->images = $this->get_alpine_images($alpine->alpine_id);
+        
+        return $alpine;
+    }
+
+    public function chose($alpine_id){
+		$this->db->where('alpine_id', $alpine_id);
+		$this->db->update('Alpine_school', array('chosen' => true));
+
+		$this->db->where('alpine_id !=', $alpine_id);
+		$this->db->update('Alpine_school', array('chosen' => false));
+	}
+
     public function get_alpine_by_id($alpine_id) {
         $this->db->where('alpine_id', $alpine_id);
         $query = $this->db->get('Alpine_school');
@@ -30,17 +49,13 @@ class Alpine_model extends CI_Model {
             return $result;
         }
 
-        //$event_images = $query->result();
-
         return null;
     }
 
     public function get_alpines() {
         $query = $this->db->get('Alpine_school');
 
-        // Add the user_name to each event in the result
         $alpines = $query->result();
-        //var_dump($events);
         $this->load->model('User_model');
 
         foreach ($alpines as $alpine) {

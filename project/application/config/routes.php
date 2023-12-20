@@ -32,3 +32,7 @@ $route['routes'] = 'RoutesController';
 $route['form_route']='FormController/form_route';
 $route['createRoute']='RoutesController/create';
 $route['export_routes'] = 'RoutesController/export_csv';
+$route['delete_event/(:any)'] = 'EventsController/delete_event/$1';
+$route['delete_report/(:any)'] = 'ReportsController/delete_report/$1';
+$route['alpine_chose/(:any)'] = 'AlpineSchoolController/chose/$1';
+$route['delete_route/(:any)/(:any)'] = 'RoutesController/delete_route/$1/$2';

@@ -22,14 +22,16 @@ class FormController extends CI_Controller {
                     $this->session->set_userdata('admin', FALSE);
                 }
                 $photo = $this->User_model->get_profile_image($username);
-                if ($photo[0]["profile_picture"] == null){
+                if ($photo[0]["profile_picture"] == null | strlen($photo[0]["profile_picture"]) < 10){
                     $this->session->set_userdata('has_photo', FALSE);
                 } else {
                     $this->session->set_userdata('has_photo', TRUE);
                 }
+		        redirect('/');
+            } else {
+       		    redirect("/");
             }
         }
-        redirect('/');
     }
 
     public function logOut() {
@@ -66,13 +68,6 @@ class FormController extends CI_Controller {
 	        $this->load->model('User_model');
             if (FALSE == $this->User_model->check_user_credentials($username, $password)){
                 $this->User_model->insert_user($username, $email, $password, $phone, $profile_image);
-                /*$this->session->set_userdata('loggedIn', TRUE);
-		        $this->session->set_userdata('user_name', $username);
-		        if ($profile_image == null){
-                    $this->session->set_userdata('has_photo', FALSE);
-                } else {
-                    $this->session->set_userdata('has_photo', TRUE);
-                }*/
             }
         }
         redirect('/');
