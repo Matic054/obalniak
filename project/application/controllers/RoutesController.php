@@ -5,6 +5,9 @@ class RoutesController extends CI_Controller {
 
 	public function index()
 	{
+		$this->load->model('Advertisements_model');
+		$data2['ad'] = $this->Advertisements_model->get_displayed_ad();
+
 		$this->load->model('Routes_model');
         $data['routes'] = $this->Routes_model->get_routes();
 
@@ -13,11 +16,11 @@ class RoutesController extends CI_Controller {
 			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
 			$this->load->view('templates/header', $data);
 			$this->load->view('routes', $data);
-		    $this->load->view('templates/footer');
+		    $this->load->view('templates/footer', $data2);
 		} else {
 			$this->load->view('templates/header');
             $this->load->view('routes', $data);
-            $this->load->view('templates/footer');
+            $this->load->view('templates/footer', $data2);
 		}
 	}
 

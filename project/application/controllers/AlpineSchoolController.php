@@ -5,6 +5,8 @@ class AlpineSchoolController extends CI_Controller {
 
 	public function index()
 	{
+		$this->load->model('Advertisements_model');
+		$data2['ad'] = $this->Advertisements_model->get_displayed_ad();
 		$this->load->model('Alpine_model');
         $data['alpines'] = $this->Alpine_model->get_alpines();
 		if ($this->session->userdata('admin') == false){
@@ -16,11 +18,11 @@ class AlpineSchoolController extends CI_Controller {
 			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
 			$this->load->view('templates/header', $data);
 			$this->load->view('alpines', $data);
-		    $this->load->view('templates/footer');
+		    $this->load->view('templates/footer', $data2);
 		} else {
 			$this->load->view('templates/header');
             $this->load->view('alpines', $data);
-            $this->load->view('templates/footer');
+            $this->load->view('templates/footer', $data2);
 		}
 	}
 
@@ -31,6 +33,9 @@ class AlpineSchoolController extends CI_Controller {
 	}
 
 	public function load_specific_alpine($alpine_id) {
+		$this->load->model('Advertisements_model');
+		$data2['ad'] = $this->Advertisements_model->get_displayed_ad();
+
         $this->load->model('Alpine_model');
         $data['alpine'] = $this->Alpine_model->get_alpine_by_id($alpine_id);
 		$data['alpine_images'] = $this->Alpine_model->get_alpine_images($alpine_id);
@@ -40,11 +45,11 @@ class AlpineSchoolController extends CI_Controller {
 			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
 			$this->load->view('templates/header', $data);
 			$this->load->view('alpine_view', $data);
-		    $this->load->view('templates/footer');
+		    $this->load->view('templates/footer', $data2);
 		} else {
 			$this->load->view('templates/header');
             $this->load->view('alpine_view', $data);
-            $this->load->view('templates/footer');
+            $this->load->view('templates/footer', $data2);
 		}
     }
 
@@ -77,6 +82,13 @@ class AlpineSchoolController extends CI_Controller {
 				$this->load_specific_alpine($alpine_id);
             }
 		}
+	}
+
+	public function delete($alpine_id){
+		$this->load->model('Alpine_model');
+		$this->Alpine_model->delete_alpine($alpine_id);
+        $this->Alpine_model->delete_alpine_image($alpine_id);
+        redirect("/index.php/alpine");
 	}
 
 }

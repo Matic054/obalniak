@@ -8,7 +8,7 @@
     <div class="event-container">
         <?php foreach ($events as $event): ?>
             <div class="event">
-                <h2><?php echo $event->title; ?></h2>
+                <h2 style="border-bottom: 3px solid #001f3f;"><?php echo $event->title; ?></h2>
 		        <p class="ev_author">Author: <?php echo $event->username; ?></p>
                 <p><?php echo substr($event->text, 0, 50); ?>...</p>
 		        <a href="<?php echo base_url('index.php/event/' . $event->event_id); ?>">More</a>

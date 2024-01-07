@@ -15,15 +15,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   <nav id="nav">
     <img src='<?php echo base_url('Assets/Images/logo.jpg'); ?>' alt="Logo">
-    <div>
-      <a href="<?php echo base_url('index.php/'); ?>">Domov</a>
-      <a href="<?php echo base_url('index.php/routes'); ?>">Routes</a>
-      <a href="<?php echo base_url('index.php/onas'); ?>">About us</a>
-      <a href="<?php echo base_url('index.php/alpine'); ?>">Alpine school</a>
-      <a href="<?php echo base_url('index.php/events'); ?>">Events</a>
-      <a href="<?php echo base_url('index.php/reports'); ?>">Reports</a>
+    <div class="nav-bar">
+      <a style="float-right" href="<?php echo base_url('index.php/'); ?>">Home</a>
+      <a style="float-right" href="<?php echo base_url('index.php/routes'); ?>">Routes</a>
+      <a style="float-right" href="<?php echo base_url('index.php/onas'); ?>">About us</a>
+      <a style="float-right" href="<?php echo base_url('index.php/alpine'); ?>">Alpine school</a>
+      <a style="float-right" href="<?php echo base_url('index.php/events'); ?>">Events</a>
+      <a style="float-right;" href="<?php echo base_url('index.php/reports'); ?>">Reports</a>
       <?php if ($this->session->userdata('admin')): ?>
-        <a href="<?php echo base_url('index.php/users_view'); ?>">Users</a>
+        <a style="float-right" href="<?php echo base_url('index.php/users_view'); ?>">Users</a>
+        <a style="float-right" href="<?php echo base_url('index.php/advertisements'); ?>">Advertisements</a>
       <?php endif; ?>
 
   
@@ -37,10 +38,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <a href="#" class="prijava" style="background-color:#b8860b; border-radius:25px;"> <strong> <?php echo $initial ?> </strong> </a>
           <?php endif; ?>
         <?php elseif ($this->session->userdata('loggedIn')==FALSE): ?>
-          <a href="#" class="prijava">Prijava</a>
+          <a href="#" class="prijava">Log in</a>
         <?php endif; ?>
-    </div>
     <?php if ($this->session->userdata('has_photo')):?>
       <img class="prijava" src="data:image/jpeg;base64,<?php echo base64_encode($photo[0]["profile_picture"]); ?>" alt="User Profile Picture">
     <?php endif; ?>
+    </div>
   </nav>

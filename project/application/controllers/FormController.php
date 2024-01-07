@@ -29,7 +29,13 @@ class FormController extends CI_Controller {
                 }
 		        redirect('/');
             } else {
-       		    redirect("/");
+       		    //redirect("/");
+                $data['wrong_info'] = true;
+                $this->load->model('Advertisements_model');
+		        $data['ad'] = $this->Advertisements_model->get_displayed_ad();
+                $this->load->view('templates/header');
+                $this->load->view('home');
+                $this->load->view('templates/footer', $data);
             }
         }
     }
@@ -38,20 +44,23 @@ class FormController extends CI_Controller {
         $this->session->set_userdata('loggedIn', FALSE);
         $this->session->set_userdata('admin', FALSE);
         $this->session->set_userdata('has_photo', FALSE);
+        $this->session->set_userdata('user_name', "");
         redirect('/');
     }
 
     public function signin(){
+        $this->load->model('Advertisements_model');
+		$data2['ad'] = $this->Advertisements_model->get_displayed_ad();
         if ($this->session->userdata('has_photo')){
 			$this->load->model('User_model');
 			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
 			$this->load->view('templates/header', $data);
 			$this->load->view('signin');
-		    $this->load->view('templates/footer');
+		    $this->load->view('templates/footer', $data2);
 		} else {
 			$this->load->view('templates/header');
             $this->load->view('signin');
-            $this->load->view('templates/footer');
+            $this->load->view('templates/footer', $data2);
 		}
     }
 
@@ -74,48 +83,57 @@ class FormController extends CI_Controller {
     }
 
     public function form_report(){
+        $this->load->model('Advertisements_model');
+		$data2['ad'] = $this->Advertisements_model->get_displayed_ad();
         if ($this->session->userdata('has_photo')){
 			$this->load->model('User_model');
 			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
 			$this->load->view('templates/header', $data);
 			$this->load->view('create_report_form');
-		    $this->load->view('templates/footer');
+		    $this->load->view('templates/footer', $data2);
 		} else {
 			$this->load->view('templates/header');
             $this->load->view('create_report_form');
-            $this->load->view('templates/footer');
+            $this->load->view('templates/footer', $data2);
 		}
     }
 
     public function form_event(){
+        $this->load->model('Advertisements_model');
+		$data2['ad'] = $this->Advertisements_model->get_displayed_ad();
         if ($this->session->userdata('has_photo')){
 			$this->load->model('User_model');
 			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
 			$this->load->view('templates/header', $data);
 			$this->load->view('create_event_form');
-		    $this->load->view('templates/footer');
+		    $this->load->view('templates/footer', $data2);
 		} else {
 			$this->load->view('templates/header');
             $this->load->view('create_event_form');
-            $this->load->view('templates/footer');
+            $this->load->view('templates/footer', $data2);
 		}
     }
 
     public function form_alpine(){
+        $this->load->model('Advertisements_model');
+		$data2['ad'] = $this->Advertisements_model->get_displayed_ad();
         if ($this->session->userdata('has_photo')){
 			$this->load->model('User_model');
 			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
 			$this->load->view('templates/header', $data);
 			$this->load->view('create_alpine_form');
-		    $this->load->view('templates/footer');
+		    $this->load->view('templates/footer', $data2);
 		} else {
 			$this->load->view('templates/header');
             $this->load->view('create_alpine_form');
-            $this->load->view('templates/footer');
+            $this->load->view('templates/footer', $data2);
 		}
     }
 
     public function form_route(){
+        $this->load->model('Advertisements_model');
+		$data2['ad'] = $this->Advertisements_model->get_displayed_ad();
+
         $this->load->model('User_model');
 		$data['users'] = $this->User_model->get_users();
         if ($this->session->userdata('has_photo')){
@@ -123,11 +141,27 @@ class FormController extends CI_Controller {
 			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
 			$this->load->view('templates/header', $data);
 			$this->load->view('create_route_form');
-		    $this->load->view('templates/footer');
+		    $this->load->view('templates/footer', $data2);
 		} else {
 			$this->load->view('templates/header');
             $this->load->view('create_route_form', $data);
-            $this->load->view('templates/footer');
+            $this->load->view('templates/footer', $data2);
+		}
+    }
+
+    public function form_ad(){
+        $this->load->model('Advertisements_model');
+		$data2['ad'] = $this->Advertisements_model->get_displayed_ad();
+        if ($this->session->userdata('has_photo')){
+			$this->load->model('User_model');
+			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
+			$this->load->view('templates/header', $data);
+			$this->load->view('create_ad_form');
+		    $this->load->view('templates/footer', $data2);
+		} else {
+			$this->load->view('templates/header');
+            $this->load->view('create_ad_form');
+            $this->load->view('templates/footer', $data2);
 		}
     }
 

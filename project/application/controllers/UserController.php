@@ -4,6 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class UserController extends CI_Controller {
 	public function view_users()
 	{
+		$this->load->model('Advertisements_model');
+		$data2['ad'] = $this->Advertisements_model->get_displayed_ad();
+
 		$this->load->model('User_model');
 		$data['users'] = $this->User_model->get_users();
 
@@ -12,11 +15,11 @@ class UserController extends CI_Controller {
 			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
 			$this->load->view('templates/header', $data);
 			$this->load->view('users_view', $data);
-		    $this->load->view('templates/footer');
+		    $this->load->view('templates/footer', $data2);
 		} else {
 			$this->load->view('templates/header');
             $this->load->view('users_view', $data);
-            $this->load->view('templates/footer');
+            $this->load->view('templates/footer', $data2);
 		}
 	}
 

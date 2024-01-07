@@ -3,7 +3,7 @@
     <input type="text" name="title" required class="form-input">
 
     <label for="text" class="form-label">Report Text:</label>
-    <textarea name="text" required class="form-input"></textarea>
+    <textarea name="text" required class="form-input" rows="6"></textarea>
 
     <label for="images" class="form-label">Report Images:</label>
     <input type="file" enctype="multipart/form-data" name="images[]" multiple accept="image/*, application/pdf" class="form-input">

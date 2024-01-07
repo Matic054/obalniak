@@ -1,6 +1,7 @@
-<h3><?php echo $event[0]->title; ?></h3>
-<p>Avtor: <?php echo $event[0]->username; ?></p>
-<p><?php echo $event[0]->text ?></p>
+<div class="single-event">
+<h1 style="text-align:center;"><?php echo $event[0]->title; ?></h1>
+<h3 style="text-align:center;">Avtor: <?php echo $event[0]->username; ?></h3 style="text-align:center;">
+<p class="text"><?php echo $event[0]->text ?></p>
 
 <?php if ($event_images): ?>
 <?php foreach ($event_images as $image): ?>
@@ -15,3 +16,4 @@
 
 <?php endforeach; ?>
 <?php endif; ?>
+</div>

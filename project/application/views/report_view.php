@@ -1,6 +1,6 @@
 <div class="single-event">
-<h3><?php echo $report[0]->title; ?></h3>
-<p>Avtor: <?php echo $report[0]->username; ?></p>
+<h1 style="text-align:center;"><?php echo $report[0]->title; ?></h1>
+<h3 style="text-align:center;">Avtor: <?php echo $report[0]->username; ?></h3>
 <p class="text"><?php echo $report[0]->text ?></p>
 <br>
 
@@ -18,17 +18,18 @@
 <?php endforeach; ?>
 <?php endif; ?>
 
-<h4>Komentarji:</h4>
+<h2 style="text-align:center;">Comments:</h2>
 <?php foreach ($comments as $comment): ?>
-    <p>By: <?php echo $comment->username; ?></p>
-    <p><?php echo $comment->comment_text; ?></p>
+    <h4 class="text">By: <?php echo $comment->username; ?></h4>
+    <p class="text"><?php echo $comment->comment_text; ?></p>
+    <br>
 <?php endforeach; ?>
 
 <?php if ($this->session->userdata('loggedIn')): ?>
-    <form action="<?php echo base_url('index.php/addReportComment/' . $report[0]->event_id); ?>" method="post">
-    <label for="text">Dodajte komentar:</label>
-    <textarea name="text" required></textarea>
-    <button type="submit">Potrdi</button>
+    <form class="comment-details-form" action="<?php echo base_url('index.php/addReportComment/' . $report[0]->event_id); ?>" method="post">
+    <label class="form-label" for="text">Add comment:</label>
+    <textarea class="form-input" name="text" required></textarea>
+    <button class="submit-button" type="submit">Add</button>
 </form>
 <?php endif; ?>
 </div>

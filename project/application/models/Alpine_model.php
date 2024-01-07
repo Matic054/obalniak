@@ -79,4 +79,14 @@ class Alpine_model extends CI_Model {
         $this->db->insert('Alpine_image', $data);
     }
 
+    public function delete_alpine($alpine_id){
+        $this->db->where('alpine_id', $alpine_id);
+        $this->db->delete('Alpine_school');
+    }
+
+    public function delete_alpine_image($alpine_id){
+        $this->db->where('alpine_id', $alpine_id);
+        $this->db->delete('Alpine_image');
+    }
+
 }

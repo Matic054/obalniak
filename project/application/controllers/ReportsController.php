@@ -5,6 +5,9 @@ class ReportsController extends CI_Controller {
 
 	public function index()
 	{
+        $this->load->model('Advertisements_model');
+		$data2['ad'] = $this->Advertisements_model->get_displayed_ad();
+
 		$this->load->model('Report_model');
         $data['reports'] = $this->Report_model->get_reports();
 
@@ -13,16 +16,18 @@ class ReportsController extends CI_Controller {
 			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
 			$this->load->view('templates/header', $data);
 			$this->load->view('reports', $data);
-		    $this->load->view('templates/footer');
+		    $this->load->view('templates/footer', $data2);
 		} else {
 			$this->load->view('templates/header');
             $this->load->view('reports', $data);
-            $this->load->view('templates/footer');
+            $this->load->view('templates/footer', $data2);
 		}
 	}
 
 	public function load_specific_report($report_id) {
-        // Use $event_id to fetch the specific event from the database
+        $this->load->model('Advertisements_model');
+		$data2['ad'] = $this->Advertisements_model->get_displayed_ad();
+
         $this->load->model('Report_model');
         $data['report'] = $this->Report_model->get_report_by_id($report_id);
 		$data['report_images'] = $this->Report_model->get_report_images($report_id);
@@ -33,11 +38,11 @@ class ReportsController extends CI_Controller {
 			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
 			$this->load->view('templates/header', $data);
 			$this->load->view('report_view', $data);
-		    $this->load->view('templates/footer');
+		    $this->load->view('templates/footer', $data2);
 		} else {
 			$this->load->view('templates/header');
             $this->load->view('report_view', $data);
-            $this->load->view('templates/footer');
+            $this->load->view('templates/footer', $data2);
 		}
     }
 

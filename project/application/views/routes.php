@@ -2,8 +2,9 @@
 
 <?php if ($this->session->userdata('admin')): ?>
     <div class="button-container">
-        <a href="<?php echo base_url('index.php/export_routes'); ?>" class="btn btn-primary">Download routes CSV</a>
+        <a href="<?php echo base_url('index.php/export_routes'); ?>" class="add-event-button">Download routes CSV</a>
     </div>
+    <br>
 <?php endif; ?>
 
 
@@ -16,7 +17,7 @@
     <div class="route-container">
         <?php foreach ($routes as $route): ?>
             <div class="route">
-                <h3><?php echo $route->mountain; ?></h3>
+                <h3 style="border-bottom: 3px solid #001f3f;"><?php echo $route->mountain; ?></h3>
                 <p >Date: <?php echo $route->date; ?></p>
 		        <p >Climbers: <?php echo $route->climbers; ?></p>
                 <p >Route: <?php echo $route->route; ?></p>
@@ -26,7 +27,7 @@
                 <?php if ($this->session->userdata('admin') | $this->session->userdata('user_name') == $route->username): ?>
                 <br>
                 <div class="button-container">
-                    <a href="<?php echo base_url('index.php/delete_route/'. $route->user_id . '/' . $route->date); ?>">Delete</a>
+                    <a class="form-button" href="<?php echo base_url('index.php/delete_route/'. $route->user_id . '/' . $route->date); ?>">Delete</a>
                 </div>
                 <?php endif; ?>
             </div>

@@ -5,6 +5,9 @@ class EventsController extends CI_Controller {
 
 	public function index()
 	{
+		$this->load->model('Advertisements_model');
+		$data2['ad'] = $this->Advertisements_model->get_displayed_ad();
+
 		$this->load->model('Event_model');
         $data['events'] = $this->Event_model->get_events();
 
@@ -13,15 +16,18 @@ class EventsController extends CI_Controller {
 			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
 			$this->load->view('templates/header', $data);
 			$this->load->view('events', $data);
-		    $this->load->view('templates/footer');
+		    $this->load->view('templates/footer', $data2);
 		} else {
 			$this->load->view('templates/header');
             $this->load->view('events', $data);
-            $this->load->view('templates/footer');
+            $this->load->view('templates/footer', $data2);
 		}
 	}
 
 	public function load_specific_event($event_id) {
+		$this->load->model('Advertisements_model');
+		$data2['ad'] = $this->Advertisements_model->get_displayed_ad();
+
         $this->load->model('Event_model');
         $data['event'] = $this->Event_model->get_event_by_id($event_id);
 		$data['event_images'] = $this->Event_model->get_event_images($event_id);
@@ -31,11 +37,11 @@ class EventsController extends CI_Controller {
 			$data['photo'] = $this->User_model->get_profile_image($this->session->userdata('user_name'));
 			$this->load->view('templates/header', $data);
 			$this->load->view('event_view', $data);
-		    $this->load->view('templates/footer');
+		    $this->load->view('templates/footer', $data2);
 		} else {
 			$this->load->view('templates/header');
             $this->load->view('event_view', $data);
-            $this->load->view('templates/footer');
+            $this->load->view('templates/footer', $data2);
 		}
     }
 

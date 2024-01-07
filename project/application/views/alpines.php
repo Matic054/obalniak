@@ -1,6 +1,9 @@
-<h1>Alpine School</h1>
 <?php if ($this->session->userdata('admin')): ?>
-    <a href="<?php echo base_url('index.php/form_alpine'); ?>">Add alpine school </a>
+    <h1>Alpine school</h1>
+    <br>
+    <div class="button-container">
+        <a href="<?php echo base_url('index.php/form_alpine'); ?>" class="add-event-button">Add alpine school </a>
+    </div>
     <div class="event-container">
         <?php foreach ($alpines as $alpine): ?>
             <div class="event">
@@ -8,6 +11,10 @@
 		        <p>Author: <?php echo $alpine->username; ?></p>
                 <p><?php echo substr($alpine->text, 0, 50); ?>...</p>
 		        <a href="<?php echo base_url('index.php/alpine/' . $alpine->alpine_id); ?>">Vec</a>
+                <br>
+                <div class="button-container">
+                    <a href="<?php echo base_url('index.php/delete_alpine/'. $alpine->alpine_id); ?>">Delete</a>
+                </div>
             </div>
         <?php endforeach; ?>
     </div>
@@ -15,9 +22,10 @@
 
 
 
-
-            <h3><?php echo $chosen->title; ?></h3>
-            <p><?php echo $chosen->text ?></p>
+    <div class="single-event">
+            <h1 style="text-align:center;"><?php echo $chosen->title; ?></h1>
+            <p class="text"><?php echo $chosen->text ?></p>
+            <br>
 
             <?php if ($chosen->images): ?>
             <?php foreach ($chosen->images as $image): ?>
@@ -30,7 +38,9 @@
                 $base64Image = base64_encode($binaryData);
                 if (startsWith($binaryData, "%PDF-")) {
                     ?>
+                    <div class="button-container">
                     <embed src="data:application/pdf;base64,<?php echo $base64Image; ?>" type="application/pdf" width="800" height="600" />
+                    </div>
                     <?php
                 } else {
                     ?>
@@ -38,7 +48,9 @@
                     <?php
                 }
                 ?>
-
             <?php endforeach; ?>
+            <br>
+            <br>
             <?php endif; ?>
+    </div>
 <?php endif; ?>
