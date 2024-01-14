@@ -17,6 +17,7 @@ class Event_model extends CI_Model {
         $this->load->model('User_model');
 
 	    $event[0]->username = $this->User_model->get_username_by_id($event[0]->user_id);
+        $event[0]->user_image = $this->User_model->get_profile_image($event[0]->username);
         
         return $event;
     }

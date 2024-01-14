@@ -7,9 +7,9 @@
     <div class="report-container">
         <?php foreach ($reports as $report): ?>
             <div class="report">
-                <h3 style="border-bottom: 3px solid #001f3f; padding-bottom:3px"><?php echo $report->title; ?></h3>
+                <h2 style="border-bottom: 3px solid #001f3f; padding-bottom:3px"><?php echo $report->title; ?></h2>
 		        <p>Author: <?php echo $report->username; ?></p>
-                <p><?php echo substr($report->text, 0, 50); ?>...</p>
+                <p><?php echo nl2br(substr($report->text, 0, 50)); ?>...</p>
 		        <a href="<?php echo base_url('index.php/report/' . $report->event_id); ?>">Vec</a>
             <?php if ($this->session->userdata('admin') | $this->session->userdata('user_name') == $report->username): ?>
               <br>

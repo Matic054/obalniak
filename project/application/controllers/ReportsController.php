@@ -92,7 +92,10 @@ class ReportsController extends CI_Controller {
             );
             $this->load->model('Report_model');
             $this->Report_model->create_comment($comment_data);
-            redirect("/index.php/report/" . substr(current_url(), -1));
+            //to get just the report id from the url
+            $parts = explode("/", current_url());
+            $r_id = end($parts);
+            redirect("/index.php/report/" . $r_id);
 		}
     }
 

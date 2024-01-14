@@ -32,6 +32,7 @@ class Report_model extends CI_Model {
         $this->load->model('User_model');
 
 	    $report[0]->username = $this->User_model->get_username_by_id($report[0]->user_id);
+        $report[0]->user_image = $this->User_model->get_profile_image($report[0]->username);
         
         return $report;
     }

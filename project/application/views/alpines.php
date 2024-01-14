@@ -9,7 +9,7 @@
             <div class="event">
                 <h2><?php echo $alpine->title; ?></h2>
 		        <p>Author: <?php echo $alpine->username; ?></p>
-                <p><?php echo substr($alpine->text, 0, 50); ?>...</p>
+                <p><?php echo nl2br(substr($alpine->text, 0, 50)); ?>...</p>
 		        <a href="<?php echo base_url('index.php/alpine/' . $alpine->alpine_id); ?>">Vec</a>
                 <br>
                 <div class="button-container">
@@ -24,7 +24,7 @@
 
     <div class="single-event">
             <h1 style="text-align:center;"><?php echo $chosen->title; ?></h1>
-            <p class="text"><?php echo $chosen->text ?></p>
+            <p class="text"><?php echo nl2br($chosen->text ); ?></p>
             <br>
 
             <?php if ($chosen->images): ?>
@@ -44,7 +44,9 @@
                     <?php
                 } else {
                     ?>
-                    <img class="event-image" src="data:image/jpeg;base64,<?php echo $base64Image; ?>" alt="slika dogodka">
+                    <div class="button-container">
+                    <img class="event-image" style="width: 40%;" src="data:image/jpeg;base64,<?php echo $base64Image; ?>" alt="slika dogodka">
+                    </div>
                     <?php
                 }
                 ?>

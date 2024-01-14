@@ -20,10 +20,10 @@
                 <h3 style="border-bottom: 3px solid #001f3f;"><?php echo $route->mountain; ?></h3>
                 <p >Date: <?php echo $route->date; ?></p>
 		        <p >Climbers: <?php echo $route->climbers; ?></p>
-                <p >Route: <?php echo $route->route; ?></p>
+                <p >Route: <?php echo nl2br($route->route); ?></p>
                 <p >Length(m): <?php echo $route->length; ?></p>
                 <p >Difficulty: <?php echo $route->difficulty; ?></p>
-                <p >Notes: <?php echo $route->notes; ?></p>
+                <p >Notes: <?php echo nl2br($route->notes); ?></p>
                 <?php if ($this->session->userdata('admin') | $this->session->userdata('user_name') == $route->username): ?>
                 <br>
                 <div class="button-container">
