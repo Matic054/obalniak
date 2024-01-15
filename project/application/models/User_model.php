@@ -54,7 +54,7 @@ class User_model extends CI_Model {
 
     //to add a new user
     public function insert_user($username, $email, $password, $phone, $profile_image) {
-        var_dump($profile_image);
+        //var_dump($profile_image);
         $data = array(
             'user_name' => $username,
             'email' => $email,
