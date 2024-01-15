@@ -43,7 +43,11 @@
     <hr>
     <h4 class="text"><?php echo $comment->username; ?></h4>
     <p class="text"><?php echo $comment->comment_text; ?></p>
-    <br>
+    <?php if ($this->session->userdata('admin')): ?>
+        <div class="button-container">
+            <a href="<?php echo base_url('index.php/delete_comment/'. $comment->comment_id . "/" . $report[0]->event_id); ?>" class="add-event-button" style="padding: 10px 20px;">Delete</a>
+        </div>
+    <?php endif; ?>
 <?php endforeach; ?>
 </div>
 

@@ -107,4 +107,10 @@ class ReportsController extends CI_Controller {
         redirect("/index.php/reports");
     }
 
+    public function delete_comment($comment_id, $report_id){
+        $this->load->model('Report_model');
+        $this->Report_model->delete_report_comment($comment_id);
+        redirect("/index.php/report/" . $report_id);
+    }
+
 }

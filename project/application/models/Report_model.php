@@ -97,4 +97,9 @@ class Report_model extends CI_Model {
         $this->db->delete('Report_comment');
     }
 
+    public function delete_report_comment($comment_id){
+        $this->db->where('comment_id', $comment_id);
+        $this->db->delete('Report_comment');
+    }
+
 }

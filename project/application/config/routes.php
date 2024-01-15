@@ -43,3 +43,4 @@ $route['delete_ad/(:any)']='AdvertisementController/delete_ad/$1';
 $route['set_ad/(:any)']='AdvertisementController/set_ad/$1';
 $route['un_set_ad/(:any)']='AdvertisementController/un_set_ad/$1';
 $route['create_ad'] = 'AdvertisementController/create';
+$route['delete_comment/(:any)/(:any)']='ReportsController/delete_comment/$1/$2';
